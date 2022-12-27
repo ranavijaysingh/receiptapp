@@ -38,7 +38,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 const sessionConfig = {
-    secret: 'thisshouldbeabettersecret!',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -133,12 +133,26 @@ app.get('/transactionSlips/:id/edit', isLoggedIn, async (req, res) => {
     res.render('campgrounds/edit', { campground });
 })
 app.get('/transactionSlips/:id/addrefer', async (req, res) => {
-    const campground = await Campground.findById(req.params.id)
-    res.render('campgrounds/addrefer', { campground });
+    try{
+        const campground = await Campground.findById(req.params.id)
+        res.render('campgrounds/addrefer', { campground });
+    }
+    catch(e)
+    {
+        res.send('Error: Page Not Found')
+    }
+
 })
 app.get('/transactionSlips/:id/updateRefer', async(req,res) => {
-    const campground = await Campground.findById(req.params.id)
-    res.render('campgrounds/updaterefer', { campground });
+    try{
+        const campground = await Campground.findById(req.params.id)
+        res.render('campgrounds/updaterefer', { campground });    
+    }
+    catch(e)
+    {
+        res.send('Error: Page Not Found')
+    }
+
 })
 app.put('/transactionSlips/:id', isLoggedIn, async (req, res) => {
     const { id } = req.params;
