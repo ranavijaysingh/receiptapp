@@ -66,12 +66,12 @@ const isLoggedIn = (req, res, next) => {
 }
 
 
-
+const regUrl = process.env.REGISTER_URL
 //Routes for Register and login
-app.get('/63a7533a2c52f8/register/randomnumber/a171466806b/comwri/69i57j69i64/mustadd',(req, res) =>{
+app.get(regUrl,(req, res) =>{
     res.render('users/register');
 });
-app.post('/63a7533a2c52f8/register/randomnumber/a171466806b/comwri/69i57j69i64/mustadd', async (req, res, next) => {
+app.post(regUrl, async (req, res, next) => {
     let registeredUser 
     try {
         const { email, username, password } = req.body;
@@ -162,7 +162,7 @@ app.delete('/transactionSlips/:id', isLoggedIn, async (req, res) => {
 
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Serving on port ${port}`)
 })

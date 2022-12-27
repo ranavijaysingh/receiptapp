@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate')%>
 <h1>Register</h1>
-<form action="/63a7533a2c52f8/register/randomnumber/a171466806b/comwri/69i57j69i64/mustadd" method="POST" class="validated-form" novalidate>
+<form action="<%=process.env.REGISTER_URL%>" method="POST" class="validated-form" novalidate>
     <div class="mb-3">
         <label class="form-label" for="username">Username</label>
         <input class="form-control" type="text" id="username" name="username" required>
