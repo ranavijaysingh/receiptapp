@@ -1,0 +1,27 @@
+.Boxing{
+    border: 0.1rem dotted grey;
+}
+.StepNo{
+    background: rgb(0, 150, 255);
+    color: rgb(255,255,255);
+}
+input {
+    width: 100%;
+    border: none;
+}
+.SubmitUtr{
+    width: 100%;
+}
+.TranList{
+    list-style-type: none;
+}
+.TranListItem{
+    text-decoration: none;
+}
+.btnLinks a{
+    
+        text-decoration: none;
+        color: white;
+    
+      
+}

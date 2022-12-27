@@ -1,0 +1,51 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/addrefer.css">
+<div class="container">
+    <div class="Step1 Boxing my-3">
+        <h5 class="StepNo py-2 px-1">Step1: Copy Amount and Bank Account information</h5>
+        <div class="name d-flex flex-row justify-content-between mx-2 my-1">
+            <div for="name" class="text-secondary">Name</div>
+            <div class="d-flex flex-row">
+                <div class="text-warning"><%=campground.name %></div>
+                <button id="copyName" value="<%=campground.name %>" onClick= "copyDetail('copyName')"class="btn btn-primary btn-sm">copy</button>
+            </div>
+            
+        </div>
+        <div class="d-flex flex-row justify-content-between mx-2 my-1">
+            <label for="amount text-dark-emphasis" class="text-secondary" >Amount</label>
+            <div class="d-flex flex-row justify-content-between">
+                <span class="text-warning"><%=campground.amount %>₹</span>
+                <button id="copyAmount" value="<%=campground.amount %>" onClick= "copyDetail('copyAmount')"class="btn btn-primary btn-sm">copy</button>
+            </div>
+        </div>   
+        <div class="d-flex flex-row justify-content-between mx-2 my-1">
+            <label for="upi" class="text-secondary">Upi</label>
+            <div class="d-flex flex-row justify-content-between">
+                <span class="text-warning"><%=campground.upi %></span>
+                <button id="copyUpi" value="<%=campground.upi %>" onClick= "copyDetail('copyUpi')"class="btn btn-primary btn-sm">copy</button>
+            </div>
+           
+        </div>     
+    </div>
+    <div class="Step2 Boxing  my-3">
+        <h5 class="StepNo py-2 px-1">Step2: Transfer and don't modify this amount to us.</h5>
+        <p class="text-muted">Please record your reference No.{Ref No.} after payment</p>
+    </div>
+    <div class="Step3 Boxing  my-3">
+        <h5  class="StepNo py-2 px-1">Step3: Please enter Ref No. to complete the recharge</h5>
+        <p class="text-muted">Be sure to return this page to fill the UTR numbers after you have completed you payment</p>
+        <form action="/transactionSlips/<%=campground._id%>/updateRefer?_method=PUT" method="POST">
+            <div>
+                <input type="text" id="ref" placeholder="UTR (UPI Ref.ID) must be 12 digits" name="campground[ref]" value="<%= campground.ref%>" required>
+            </div>
+            <button class="SubmitUtr btn btn-primary active">Submit UTR</button>
+        </form> 
+    </div>
+</div>
+
+<script>
+    const copyDetail = (copyValue) =>{
+        let copyText = document.getElementById(copyValue);
+        navigator.clipboard.writeText(copyText.value);
+    }
+</script>

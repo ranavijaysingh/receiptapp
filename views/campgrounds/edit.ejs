@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate')%>
+    <h1>Edit TransactionSlip</h1>
+    <form action="/transactionSlips/<%=campground._id%>?_method=PUT" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="campground[name]" value="<%=campground.name %>">
+        </div>
+        <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="text" class="form-control" id="amount" name="campground[amount]" value="<%= campground.amount%>">
+        </div>
+        <div class="mb-3">
+            <label for="upi" class="form-label">Upi</label>
+            <input type="text" class="form-control" id="upi" name="campground[upi]" value="<%= campground.upi%>">
+        </div>
+        <div class="mb-3">
+            <label for="ref" class="form-label">Ref</label>
+            <input type="text" class="form-control" id="ref" name="campground[ref]" value="<%= campground.ref%>">
+        </div>
+        <button type="submit" class="btn btn-primary">Update TransactionSlip</button>
+    </form>
+    <a href="/transactionSlips/<%= campground._id%>">Back To TransactionSlip</a>

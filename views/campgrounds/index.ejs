@@ -1,0 +1,16 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/addrefer.css">
+<h1>All TransactionSlips</h1>
+<div>
+    <a href="/transactionSlips/new">Add TransactionSlip</a>
+</div>
+<ul>
+    <% for (let campground of campgrounds){%>
+    <li class="mx-2 border-bottom TranList">
+        <a class="TranListItem d-flex flex-row justify-content-between "href="/transactionSlips/<%= campground._id %>">
+            <p><%= campground.name %></p>
+            <p><%= campground.amount %></p></a> 
+        
+    </li>
+    <% }%>
+</ul>
