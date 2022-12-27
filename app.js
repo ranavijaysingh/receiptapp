@@ -82,7 +82,7 @@ app.post('/63a7533a2c52f8/register/randomnumber/a171466806b/comwri/69i57j69i64/m
             res.redirect('/transactionSlips');
         })
     } catch (e) {
-        console.log("inside catch");
+        
         res.redirect('/login');
     }
     
@@ -106,7 +106,7 @@ app.get('/logout', (req, res, next) => {
 
 // Routes for Transactions
 app.get('/', (req, res) => {
-    res.render('home')
+    res.redirect('/transactionSlips');
 });
 app.get('/transactionSlips', isLoggedIn, async (req, res) => {
     const campgrounds = await Campground.find({});
@@ -162,7 +162,7 @@ app.delete('/transactionSlips/:id', isLoggedIn, async (req, res) => {
 
 
 
-
-app.listen(3000, () => {
-    console.log('Serving on port 3000')
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Serving on port ${port}`)
 })
