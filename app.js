@@ -1,7 +1,6 @@
 if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
 }
-
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -13,8 +12,10 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
+const dbUrl = process.env.DB_URL
+// 'mongodb://localhost:27017/transaction-receipt'
 mongoose.set('strictQuery',false);
-mongoose.connect('mongodb://localhost:27017/transaction-receipt', {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
